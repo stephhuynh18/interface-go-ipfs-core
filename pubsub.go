@@ -19,6 +19,10 @@ type PubSubSubscription interface {
 
 // PubSubMessage is a single PubSub message
 type PubSubMessage interface {
+	ID() string
+
+	ReceivedFrom() peer.ID
+	
 	// From returns id of a peer from which the message has arrived
 	From() peer.ID
 
@@ -30,6 +34,8 @@ type PubSubMessage interface {
 
 	// Topics returns list of topics this message was set to
 	Topics() []string
+
+	Signature() []byte
 }
 
 // PubSubAPI specifies the interface to PubSub
